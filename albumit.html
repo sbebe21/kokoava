@@ -68,9 +68,32 @@
     </div>
     <div class="col-sm-8">
       <h1>ALBUMIT</h1>
-      <p>Nirvana oli yhdysvaltalainen bändi, joka oli toiminnassa vuosina 1987-1994. Nirvanaa pidetään yhtenä rock-musiikin historian tärkeimpänä ja vaikutusvaltaisimpana bändinä.<br><br>
-      Nirvana nousi Seattlen grunge-skenen myötä tunnetuksi ja julkaisi uransa aikana kolme studioalbumia. Ensimmäinen single, Smells Like Teen Spirit, räjäytti potin ja nosti bändin suosion tähtiin.<br><br>
-      Lue lisää klikkailemalla yllä olevaa navigaatiota.</p>
+     <script>
+                function haeAlbumit() {
+
+                    fetch(`https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=nirvana`)
+.then(function (response) {
+                            if (!response.ok) {
+                                throw new Error("Tietoa ei pystytä hakemaan.");
+                            }
+                            return response.json();
+                        })
+                        .then(function (responseJson) {
+                            saatieto(responseJson);
+                        })
+                        .catch(function (error) {
+                            document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan.</p>";
+                            document.getElementById("albumi").innerHTML = "";
+                        });
+                }
+
+                function albumitieto(obj, name) {
+                    let albumi = obj.strAlbum;
+                    document.getElementById("album").innerHTML = "<b>Albumin nimi: " + album + "</b>";
+                }
+                window.onload = haeAlbumit;
+                        
+            </script>
     </div>
   </div>
 </div>
