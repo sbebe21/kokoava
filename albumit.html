@@ -93,21 +93,6 @@
 
             function kerro(obj) {
                 let tiedot = "<p><img src=" + obj.kuva + "></p>"obj.Albumit + "<br>"
-                
-
-                //keskitetään teksi center-tagillä keskelle
-                    + "<center><h3>" + "Opintojakso" + "</h3>" + "Nimi: " + obj.toteutus.nimi + "<br>"
-                    + "Määrä: " + obj.toteutus.maara + "<br>"
-                    + "Osallistujat: " + obj.toteutus.osallistujat + "<br>"
-                    + "Toteutuksen aikaväli: " + obj.toteutus.aika + "<br>"
-                    + "Toteutuksen kesto: " + obj.toteutus.kesto + "<br></center>";
-
-            //for-silmukka, joka luo myös linkit sivulle
-                for (var i = 0; i < obj.tekniikat.length; i++) {
-                    tiedot += "<b>Aihe: " + obj.tekniikat[i].aihe + "</b>";
-                    tiedot += " <a href=" + obj.tekniikat[i].linkki + ">" + obj.tekniikat[i].linkki + "</a>" + "<br>";
-                }
-                tiedot += "</p>";
 
                 document.getElementById("vastaus").innerHTML = tiedot;
 
