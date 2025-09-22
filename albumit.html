@@ -68,6 +68,7 @@
     </div>
     <div class="col-sm-8">
       <h1>ALBUMIT</h1>
+      <div id="vastaus"></div>
    <br><br><script>
        fetch('albumit.JSON')
 
@@ -92,7 +93,7 @@
             //Funktio joka hakee tiedon objektista ja kirjoittaa ne sivulle
 
             function kerro(obj) {
-                let tiedot = "<p><img src=" + obj.kuva + "></p>"obj.Albumit + "<br>"
+                let tiedot = "<p><img src='" + obj.kuva + "'></p>" + obj.Albumit + "<br>"
 
                 document.getElementById("vastaus").innerHTML = tiedot;
 
