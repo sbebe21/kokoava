@@ -1,16 +1,5 @@
 {
-  "albumit": [
-    {
-      "Nimi": "Bleach",
-      "Julkaisuvuosi": "1989"
-    },
-    {
-      "Nimi": "Nevermind",
-      "Julkaisuvuosi": "1991"
-    },
-    {
-      "Nimi": "In Utero",
-      "Julkaisuvuosi": "1993"
-    },
-  ]
+  "otsikko": "Nirvanan albumit",
+  "kuva": "https://sbebe21.github.io/kokoava/albumit.png",
+    "Albumit": ["Bleach (1989)", "Nevermind (1991)", "In utero (1993)"],
 }
