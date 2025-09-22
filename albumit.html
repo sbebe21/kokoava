@@ -68,32 +68,48 @@
     </div>
     <div class="col-sm-8">
       <h1>ALBUMIT</h1>
-     <script>
-                function haeAlbumit() {
+   <br><br>
+       fetch('albumit.JSON')
 
-                    fetch(`https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=nirvana`)
-.then(function (response) {
-                            if (!response.ok) {
-                                throw new Error("Tietoa ei pystytä hakemaan.");
-                            }
-                            return response.json();
-                        })
-                        .then(function (responseJson) {
-                            saatieto(responseJson);
-                        })
-                        .catch(function (error) {
-                            document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan.</p>";
-                            document.getElementById("albumi").innerHTML = "";
-                        });
-                }
+                // Muunnetaan vastaus JSON-tietue JS Olio muotoon
+                .then(function (response) {
+                    return response.json();
+                })
 
-                function albumitieto(obj, name) {
-                    let albumi = obj.strAlbum;
-                    document.getElementById("album").innerHTML = "<b>Albumin nimi: " + album + "</b>";
+                //Käsitellään muunnettu (eli JSON muotoinen) vastaus 
+                // Kutsutaan funktiota kerro()ja välitetään sille json-vastaus
+
+                .then(function (responseJson) {
+                    kerro(responseJson);
+                })
+
+                // Jos tuli jokin virhe 
+
+                .catch(function (error) {
+                    document.getElementById("vastaus").innerHTML = "<p>Tietoa ei pystytä hakemaan.</p>";
+                })
+
+            //Funktio joka hakee tiedon objektista ja kirjoittaa ne sivulle
+
+            function kerro(obj) {
+                let tiedot = "<h1>" + obj.nimi + "</h1><br>"
+                    + obj.julkaisuvuosi + "<br><hr>";
+      
+                    + "Albumin nimi: " + obj.nimi + "<br>"
+                    + "Julkaisuvuosi: " + obj.julkaisuvuosi + "<br>"
+
+            //for-silmukka, joka luo myös linkit sivulle
+                for (var i = 0; i < obj.tekniikat.length; i++) {
+                    tiedot += "<b>Aihe: " + obj.tekniikat[i].aihe + "</b>";
+                    tiedot += " <a href=" + obj.tekniikat[i].linkki + ">" + obj.tekniikat[i].linkki + "</a>" + "<br>";
                 }
-                window.onload = haeAlbumit;
-                        
-            </script>
+                tiedot += "</p>";
+
+                document.getElementById("vastaus").innerHTML = tiedot;
+
+            }
+
+        </script>
     </div>
   </div>
 </div>
